@@ -76,7 +76,7 @@ export class EventCenter {
     }
 
     /**
-     * 
+     * 删除指定对象事件
      * @param eventName 
      * @param callback 
      * @param target 
