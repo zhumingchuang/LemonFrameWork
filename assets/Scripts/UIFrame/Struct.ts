@@ -1,3 +1,27 @@
+import { FormType, ModalOpacity } from "./Config/SysDefine";
+
+export class ModalType {
+    public opacity: ModalOpacity = ModalOpacity.OpacityHalf;
+    public clickMaskClose = false;      // 点击阴影关闭
+    public isEasing = true;             // 缓动实现
+    public easingTime = 0.2;            // 缓动时间
+    public dualBlur = false;            // 模糊
+
+
+    constructor(opacity = ModalOpacity.OpacityHalf, ClickMaskClose = false, IsEasing = true, EasingTime = 0.2) {
+        this.opacity = opacity;
+        this.clickMaskClose = ClickMaskClose;
+        this.isEasing = IsEasing;
+        this.easingTime = EasingTime;
+    }
+
+    useBlur() {
+        this.dualBlur = true;
+        return this;
+    }
+}
+
+
 /**
  * IFormConfig和AutoConfig对应, 是窗体的固定属性, 不会动态修改.
  */
@@ -61,11 +85,19 @@ export enum EPriority {
 
 /**
  * 
+ */
+export enum ECloseType {
+    CloseAndHide,           // 关闭后隐藏
+    CloseAndDestory,        // 关闭后销毁
+    LRU,                    // 使用LRU控制其销毁时机
+}
+
+/**
+ * 
  * @param form 
  * @param type 
  * @returns 
  */
-import { FormType, ModalOpacity } from "./Config/SysDefine";
 export function GetForm(form: IFormConfig | string, type = FormType.Screen): IFormConfig {
     if (typeof form === "string") {
         return {

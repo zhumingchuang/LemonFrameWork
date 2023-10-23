@@ -1,6 +1,7 @@
 import { IFormConfig, IFormData, GetForm } from "./Struct";
+import { FormType, SysDefine } from "./Config/SysDefine";
 import { warn } from "cc";
-
+import UIManager from "./UIManager";
 /**
  * 
  */
@@ -25,7 +26,23 @@ class SceneManager {
         }
         await this.openLoading(formData?.loadingForm, params, formData);
 
+        if(this._scenes.length>0){
+            let currScene=this._scenes[this._scenes.length-1];
+            //await UIManager
+        }
 
+    }
+
+    /**
+     * 
+     * @param form 
+     * @param params 
+     * @param formData 
+     * @returns 
+     */
+    public async close(form: IFormConfig | string, params?: any, formData?: IFormData) {
+        form = GetForm(form);
+        return UIManager.getInstance().closeForm(form, params, formData);
     }
 
     /**
@@ -38,9 +55,9 @@ class SceneManager {
     private async openLoading(formConfig: IFormConfig, params: any, formData: IFormData) {
         let form = formConfig || SysDefine.defaultLoadingForm;
         if(!form) return ;
-        await TipsMgr.open(form.prefabUrl, params, formData);
+        //await TipsMgr.open(form.prefabUrl, params, formData);
     }
-    
+
     /**
      * 
      * @param formConfig 
@@ -49,6 +66,8 @@ class SceneManager {
     private async closeLoading(formConfig: IFormConfig) {
         let form = formConfig || SysDefine.defaultLoadingForm;
         if(!form) return ;
-        await TipsMgr.close(form.prefabUrl);
+        //await TipsMgr.close(form.prefabUrl);
     }
 }
+
+export default new SceneManager();
