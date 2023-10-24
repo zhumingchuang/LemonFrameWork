@@ -88,19 +88,17 @@ export default class UIConfig {
         prefabUrl: "Forms/Windows/UITips",
         type: "UIWindow"
     }
+    
 }
-
-import { Game, game, js } from "cc"
-import { EDITOR } from "cc/env"
-game.on(Game.EVENT_GAME_INITED, () => {
-    if (EDITOR) return;
-    for (const key in UIConfig) {
-        let constourt = js.getClassByName(key);
-        if (!constourt) {
+cc.game.on(cc.game.EVENT_GAME_INITED, () => {
+    if(CC_EDITOR) return;
+    for(const key in UIConfig) { 
+        let constourt = cc.js.getClassByName(key);
+        if(!constourt) {
             let urls = UIConfig[key].prefabUrl.split('/') as string[];
-            if (!urls || urls.length <= 0) continue;
-            let name = urls[urls.length - 1];
-            constourt = js.getClassByName(name);
+            if(!urls || urls.length <= 0) continue;
+            let name = urls[urls.length-1];
+            constourt = cc.js.getClassByName(name);
         }
         constourt['UIConfig'] = UIConfig[key];
     }

@@ -1,14 +1,22 @@
-import { _decorator, Component, Node } from 'cc';
+import PropController from "./Common/Components/PropController";
+import UINavigator from "./UIScript/UINavigator";
+import { _decorator, Component } from "cc";
+
 const { ccclass, property } = _decorator;
 
-@ccclass('Main')
-export class Main extends Component {
-    start() {
+@ccclass
+export default class Main extends Component {
+
+    @property(PropController) building: PropController = null;
+    onLoad() {
 
     }
 
-    update(deltaTime: number) {
-        
+    start() {
+        UINavigator.open();
+    }
+
+    onDestroy() {
+
     }
 }
-

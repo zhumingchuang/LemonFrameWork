@@ -1,6 +1,7 @@
-/**
- * 窗体类型
- */
+import UIConfig from "../../UIConfig";
+import { IFormConfig } from "../Struct";
+
+/**窗体类型 */
 export enum FormType {
     /** 屏幕 */
     Screen = "UIScreen",
@@ -14,10 +15,7 @@ export enum FormType {
     Tips = "UITips",
 
 }
-
-/**
- * 透明度类型
- */
+/**透明度类型 */
 export enum ModalOpacity {
     /** 没有mask, 可以穿透 */
     None,
@@ -32,22 +30,14 @@ export enum ModalOpacity {
     /** 完全不透明 */
     OpacityFull
 }
-
-/** 
- * UI的状态 
- */
+/** UI的状态 */
 export enum UIState {
     None = 0,
     Loading = 1,
     Showing = 2,
     Hiding = 3,
 }
-
-/**
- * 常量
- */
-import UIConfig from "../../UIConfig";
-import { IFormConfig } from "../Struct";
+/** 常量 */
 export class SysDefine {
     /* 加载窗体 */
     public static defaultLoadingForm: IFormConfig = UIConfig.UILoading;
