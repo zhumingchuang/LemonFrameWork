@@ -1,9 +1,14 @@
 {
-  "name": "NewProject",
-  "uuid": "bad23dcf-6364-49b5-835f-406c1c2d9c85",
-  "version": "3.0.0",
-  "_sourceId": "c30b28da-749e-479b-bcb6-cecd8d7be9e3",
+  "name": "cocos_creator_framework",
+  "type": "3d",
+  "uuid": "a4efa050-a00e-416a-a32a-1d947807d57e",
+  "version": "3.5.1",
   "creator": {
     "version": "3.8.0"
+  },
+  "dependencies": {
+    "@types/ws": "^8.5.3",
+    "http": "^0.0.1-security",
+    "ws": "^8.8.1"
   }
 }
